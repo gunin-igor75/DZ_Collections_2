@@ -17,13 +17,13 @@ public class EmployeeBook {
         this.employeeBook = employeeBook;
     }
 
-    // Минимальная зарплата по предприятию
+    // РњРёРЅРёРјР°Р»СЊРЅР°СЏ Р·Р°СЂРїР»Р°С‚Р° РїРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЋ
 
     public Employee minimumSalary() {
         return getEmployeeBook().values().stream().min(Comparator.comparing(Employee::getSalary)).orElse(null);
     }
 
-    // Минимальная зарплата по отделу
+    // РњРёРЅРёРјР°Р»СЊРЅР°СЏ Р·Р°СЂРїР»Р°С‚Р° РїРѕ РѕС‚РґРµР»Сѓ
 
     public Employee minimumSalary(int department) {
         return getEmployeeBook().values().
@@ -32,12 +32,12 @@ public class EmployeeBook {
                 min(Comparator.comparing(Employee::getSalary)).orElse(null);
     }
 
-    // Максимальная зарплата по предприятию
+    // РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ Р·Р°СЂРїР»Р°С‚Р° РїРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЋ
 
     public Employee maximumSalary() {
         return getEmployeeBook().values().stream().max(Comparator.comparing(Employee::getSalary)).orElse(null);
     }
-    // Максимальная зарплата по отделу
+    // РњР°РєСЃРёРјР°Р»СЊРЅР°СЏ Р·Р°СЂРїР»Р°С‚Р° РїРѕ РѕС‚РґРµР»Сѓ
 
     public Employee maximumSalary(int department) {
         return getEmployeeBook().values().
@@ -46,39 +46,39 @@ public class EmployeeBook {
                 max(Comparator.comparing(Employee::getSalary)).orElse(null);
     }
 
-    // Ощие затраты по предприятию
+    // РћС‰РёРµ Р·Р°С‚СЂР°С‚С‹ РїРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЋ
     public double costAmount() {
         return getEmployeeBook().values().stream().mapToDouble(Employee::getSalary).sum();
 
     }
 
-    // Ощие затраты по отделу
+    // РћС‰РёРµ Р·Р°С‚СЂР°С‚С‹ РїРѕ РѕС‚РґРµР»Сѓ
     public double costAmount(int department) {
         return getEmployeeBook().values().
                 stream().filter(s -> s.getDepartment() == department).
                 mapToDouble(Employee::getSalary).sum();
     }
 
-    // Средняя зарплата по предприятию
+    // РЎСЂРµРґРЅСЏСЏ Р·Р°СЂРїР»Р°С‚Р° РїРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЋ
 
     public double avgSalary() {
         return (costAmount() / getEmployeeBook().size());
     }
 
-    // Средняя зарплата по отделу
+    // РЎСЂРµРґРЅСЏСЏ Р·Р°СЂРїР»Р°С‚Р° РїРѕ РѕС‚РґРµР»Сѓ
     public double avgSalary(int department) {
         int size = getEmployeeBook().values().stream().filter(s -> s.getDepartment() == department).toList().size();
         return (costAmount(department) / size);
     }
 
-    // Индексация зарплаты по всему предприятию
+    // РРЅРґРµРєСЃР°С†РёСЏ Р·Р°СЂРїР»Р°С‚С‹ РїРѕ РІСЃРµРјСѓ РїСЂРµРґРїСЂРёСЏС‚РёСЋ
 
     public void indexSalary(int percent) {
         double coefficient = (double) percent / 100 + 1;
         getEmployeeBook().forEach((key, value) -> value.setSalary(value.getSalary() * coefficient));
     }
 
-    // Индексация зарплаты по отделам
+    // РРЅРґРµРєСЃР°С†РёСЏ Р·Р°СЂРїР»Р°С‚С‹ РїРѕ РѕС‚РґРµР»Р°Рј
 
     public void indexSalary(int percent, int department) {
         double coefficient = (double) percent / 100 + 1;
@@ -91,27 +91,27 @@ public class EmployeeBook {
         List<Employee> employees = new ArrayList<>(getEmployeeBook().values().stream().
                 filter(s -> s.getSalary() < minimum).toList());
         if (employees.isEmpty()) {
-            System.out.println(("Сотрудников с зарплатой менее " + minimum + " на предприятии нет"));
+            System.out.println(("РЎРѕС‚СЂСѓРґРЅРёРєРѕРІ СЃ Р·Р°СЂРїР»Р°С‚РѕР№ РјРµРЅРµРµ " + minimum + " РЅР° РїСЂРµРґРїСЂРёСЏС‚РёРё РЅРµС‚"));
         } else {
-            System.out.printf("Сотрудники с зарплатой менее %.2f руб:\n", minimum);
+            System.out.printf("РЎРѕС‚СЂСѓРґРЅРёРєРё СЃ Р·Р°СЂРїР»Р°С‚РѕР№ РјРµРЅРµРµ %.2f СЂСѓР±:\n", minimum);
             employees.forEach(System.out::println);
         }
     }
 
-    // Печать сотрудников с зарплатов более или равной
+    // РџРµС‡Р°С‚СЊ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ СЃ Р·Р°СЂРїР»Р°С‚РѕРІ Р±РѕР»РµРµ РёР»Рё СЂР°РІРЅРѕР№
 
     public void printMaximumSalaryTotal(double maximum) {
         List<Employee> employees = new ArrayList<>(getEmployeeBook().values().stream().
                 filter(s -> s.getSalary() >= maximum).toList());
         if (employees.isEmpty()) {
-            System.out.println(("Сотрудников с зарплатой равной или более " + maximum + " на предприятии нет"));
+            System.out.println(("РЎРѕС‚СЂСѓРґРЅРёРєРѕРІ СЃ Р·Р°СЂРїР»Р°С‚РѕР№ СЂР°РІРЅРѕР№ РёР»Рё Р±РѕР»РµРµ " + maximum + " РЅР° РїСЂРµРґРїСЂРёСЏС‚РёРё РЅРµС‚"));
         } else {
-            System.out.printf("Сотрудники с зарплатой равной или более %.2f руб:\n", maximum);
+            System.out.printf("РЎРѕС‚СЂСѓРґРЅРёРєРё СЃ Р·Р°СЂРїР»Р°С‚РѕР№ СЂР°РІРЅРѕР№ РёР»Рё Р±РѕР»РµРµ %.2f СЂСѓР±:\n", maximum);
             employees.forEach(System.out::println);
         }
     }
 
-    // Добавление сотрудника
+    // Р”РѕР±Р°РІР»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР°
     public void addEmployee(Employee employee) {
         if (employee != null && !employeeBook.containsKey(employee.getFullName())) {
             employee.setId(id);
@@ -119,7 +119,7 @@ public class EmployeeBook {
             employeeBook.put(employee.getFullName(), employee);
         }
     }
-    // Удаление сотрудника по Ф.И.О.
+    // РЈРґР°Р»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР° РїРѕ Р¤.Р.Рћ.
 
     public void removeEmployee(String fulName) {
         if (fulName != null && employeeBook.containsKey(fulName)) {
@@ -127,49 +127,49 @@ public class EmployeeBook {
         }
     }
 
-    // Удаление сотрудника по id
+    // РЈРґР°Р»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР° РїРѕ id
 
     public void removeEmployee(int id) {
         Employee employee = getEmployeeBook().values().
                 stream().
                 filter(s -> s.getId() == id).findFirst().orElse(null);
         if (employee == null) {
-            System.out.println("Такого работника нет");
+            System.out.println("РўР°РєРѕРіРѕ СЂР°Р±РѕС‚РЅРёРєР° РЅРµС‚");
         } else {
             removeEmployee(employee.getFullName());
         }
     }
 
-    // Изменение по Ф.И.О номера отдела
+    // РР·РјРµРЅРµРЅРёРµ РїРѕ Р¤.Р.Рћ РЅРѕРјРµСЂР° РѕС‚РґРµР»Р°
     public void setDepartment(String fullName, int department) {
         if (getEmployeeBook().containsKey(fullName)) {
             getEmployeeBook().get(fullName).setDepartment(department);
         } else {
-            System.out.println(fullName + " не является нашим работником");
+            System.out.println(fullName + " РЅРµ СЏРІР»СЏРµС‚СЃСЏ РЅР°С€РёРј СЂР°Р±РѕС‚РЅРёРєРѕРј");
         }
     }
 
-    // Изменение по Ф.И.О зарплаты
+    // РР·РјРµРЅРµРЅРёРµ РїРѕ Р¤.Р.Рћ Р·Р°СЂРїР»Р°С‚С‹
     public void setSalary(String fullName, double salary) {
         if (getEmployeeBook().containsKey(fullName)) {
             getEmployeeBook().get(fullName).setSalary(salary);
         } else {
-            System.out.println(fullName + " не является нашим работником");
+            System.out.println(fullName + " РЅРµ СЏРІР»СЏРµС‚СЃСЏ РЅР°С€РёРј СЂР°Р±РѕС‚РЅРёРєРѕРј");
         }
     }
 
-    // Печать Ф.И.О. всего предприятия
+    // РџРµС‡Р°С‚СЊ Р¤.Р.Рћ. РІСЃРµРіРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЏ
 
     public void printFullName() {
         getEmployeeBook().values().forEach(s -> System.out.println(s.getFullName()));
     }
 
 
-    // Печать сотрудников
+    // РџРµС‡Р°С‚СЊ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ
     public void print() {
         getEmployeeBook().values().forEach(System.out::println);
     }
-    // Поиск сотрудника
+    // РџРѕРёСЃРє СЃРѕС‚СЂСѓРґРЅРёРєР°
 
     public Employee findEmployee(String fullName) {
         if (getEmployeeBook().containsKey(fullName)) {

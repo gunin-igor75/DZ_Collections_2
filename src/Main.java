@@ -16,12 +16,12 @@ public class Main {
                 employeeBook.addEmployee(employee);
             }
         }
-        // Изначально считаем что к нам приходит месячна зарплата
+        // РР·РЅР°С‡Р°Р»СЊРЅРѕ СЃС‡РёС‚Р°РµРј С‡С‚Рѕ Рє РЅР°Рј РїСЂРёС…РѕРґРёС‚ РјРµСЃСЏС‡РЅР° Р·Р°СЂРїР»Р°С‚Р°
         double totalMonth = employeeBook.costAmount();
-        System.out.printf("Сумма затрат по предприятию  %.2f руб.\n", totalMonth);
+        System.out.printf("РЎСѓРјРјР° Р·Р°С‚СЂР°С‚ РїРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЋ  %.2f СЂСѓР±.\n", totalMonth);
         System.out.println();
         double departmentMonth = employeeBook.costAmount(5);
-        System.out.printf("Сумма затрат по отделу №%d  %.2f руб.\n", 5, departmentMonth);
+        System.out.printf("РЎСѓРјРјР° Р·Р°С‚СЂР°С‚ РїРѕ РѕС‚РґРµР»Сѓ в„–%d  %.2f СЂСѓР±.\n", 5, departmentMonth);
         System.out.println();
         System.out.println(employeeBook.minimumSalary());
         System.out.println();
@@ -32,18 +32,18 @@ public class Main {
         System.out.println(employeeBook.maximumSalary(4));
         System.out.println();
         double avgMonth = employeeBook.avgSalary();
-        System.out.printf("Среднее затрат по предприятию  %.2f руб.\n", avgMonth);
+        System.out.printf("РЎСЂРµРґРЅРµРµ Р·Р°С‚СЂР°С‚ РїРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЋ  %.2f СЂСѓР±.\n", avgMonth);
         System.out.println();
         double departmentAvg = employeeBook.avgSalary(5);
-        System.out.printf("Среднее затрат по отделу №%d  %.2f руб.\n", 5, departmentAvg);
+        System.out.printf("РЎСЂРµРґРЅРµРµ Р·Р°С‚СЂР°С‚ РїРѕ РѕС‚РґРµР»Сѓ в„–%d  %.2f СЂСѓР±.\n", 5, departmentAvg);
         System.out.println();
-        employeeBook.indexSalary(10); // индексация з/п по предприятию
+        employeeBook.indexSalary(10); // РёРЅРґРµРєСЃР°С†РёСЏ Р·/Рї РїРѕ РїСЂРµРґРїСЂРёСЏС‚РёСЋ
         System.out.println();
-        employeeBook.indexSalary(15, 2); // индексация з/п по отделу
+        employeeBook.indexSalary(15, 2); // РёРЅРґРµРєСЃР°С†РёСЏ Р·/Рї РїРѕ РѕС‚РґРµР»Сѓ
         System.out.println();
-        employeeBook.printFullName(); //  Ф. И. О. всех сотрудников
+        employeeBook.printFullName(); //  Р¤. Р. Рћ. РІСЃРµС… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ
         System.out.println();
-        employeeBook.print(); // список всех сотрудников со всеми имеющимися по ним данными
+        employeeBook.print(); // СЃРїРёСЃРѕРє РІСЃРµС… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ СЃРѕ РІСЃРµРјРё РёРјРµСЋС‰РёРјРёСЃСЏ РїРѕ РЅРёРј РґР°РЅРЅС‹РјРё
         System.out.println();
         employeeBook.printMinimumSalaryTotal(50000);
         System.out.println();
@@ -53,20 +53,20 @@ public class Main {
         System.out.println(employeeBook.minimumSalary());
 
         System.out.println();
-        employeeBook.addEmployee(new Employee("Бревнов",
-                "Пень", "Кустинович",3, 55000));
+        employeeBook.addEmployee(new Employee("Р‘СЂРµРІРЅРѕРІ",
+                "РџРµРЅСЊ", "РљСѓСЃС‚РёРЅРѕРІРёС‡",3, 55000));
         employeeBook.print();
         System.out.println();
         employeeBook.removeEmployee(10);
         employeeBook.print();
         System.out.println();
-        employeeBook.removeEmployee("Табуреткин Игорь Иванович");
+        employeeBook.removeEmployee("РўР°Р±СѓСЂРµС‚РєРёРЅ РРіРѕСЂСЊ РРІР°РЅРѕРІРёС‡");
         employeeBook.print();
         System.out.println();
-        employeeBook.setDepartment("Петров Иван Петрович", 1);
-        System.out.println(employeeBook.findEmployee("Петров Иван Петрович"));
+        employeeBook.setDepartment("РџРµС‚СЂРѕРІ РРІР°РЅ РџРµС‚СЂРѕРІРёС‡", 1);
+        System.out.println(employeeBook.findEmployee("РџРµС‚СЂРѕРІ РРІР°РЅ РџРµС‚СЂРѕРІРёС‡"));
         System.out.println();
-        employeeBook.setSalary("Петрова Ольга Ивановна", 70000);
-        System.out.println(employeeBook.findEmployee("Петрова Ольга Ивановна"));
+        employeeBook.setSalary("РџРµС‚СЂРѕРІР° РћР»СЊРіР° РРІР°РЅРѕРІРЅР°", 70000);
+        System.out.println(employeeBook.findEmployee("РџРµС‚СЂРѕРІР° РћР»СЊРіР° РРІР°РЅРѕРІРЅР°"));
     }
 }
